@@ -131,3 +131,11 @@
 - ![alt text](<npm run.png>)
 - ![alt text](<npm install.png>)
 - ![alt text](<docker run pic.png>)
+
+
+
+# Resources
+1. Chat GPT 
+    - Helped me fully understand the set of everything in docker "the docker documentation given was difficult for me to understand and ChatGPT dumbed it down for me."
+2. Michael Zimmer
+    - helped me with the editing of my workflow to make sure it worked.
