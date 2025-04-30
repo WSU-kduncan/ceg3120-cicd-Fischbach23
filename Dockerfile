@@ -1,16 +1,17 @@
-# Stage 1: Build the Angular app
+# Stage 1: Build Angular app
 FROM node:18-alpine as builder
 
 WORKDIR /app
 
-COPY . .
+# Copy only the Angular app subdirectory
+COPY angular-site/wsu-hw-ng-main/ /app/
 
 RUN npm install && npm run build
 
-# Stage 2: Serve the app using NGINX
+# Stage 2: Serve it with NGINX
 FROM nginx:alpine
 
-# Copy built Angular files from builder stage
+# UPDATE this path if your app builds to a subfolder like dist/app-name
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
