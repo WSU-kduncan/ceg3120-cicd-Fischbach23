@@ -1,11 +1,17 @@
-FROM node:18-alpine
+# Use a Node image to build the app
+FROM node:18-alpine as builder
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm install && npm install -g http-server
+RUN npm install && npm run build
+
+# Use a lightweight image to serve the Angular app
+FROM nginx:alpine
+
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 
-CMD ["http-server", "dist"]
+CMD ["nginx", "-g", "daemon off;"]
