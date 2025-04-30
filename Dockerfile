@@ -1,4 +1,4 @@
-# Use a Node image to build the app
+# Stage 1: Build the Angular app
 FROM node:18-alpine as builder
 
 WORKDIR /app
@@ -7,9 +7,10 @@ COPY . .
 
 RUN npm install && npm run build
 
-# Use a lightweight image to serve the Angular app
+# Stage 2: Serve the app using NGINX
 FROM nginx:alpine
 
+# Copy built Angular files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
