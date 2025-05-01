@@ -8,7 +8,7 @@
       "trigger-rule": {
         "match": {
           "type": "value",
-          "value": "blakessecret123",
+          "value": "blakesecret123",
           "parameter": {
             "source": "url",
             "name": "token"
