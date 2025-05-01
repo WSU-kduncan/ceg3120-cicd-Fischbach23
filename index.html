@@ -1,9 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Deployed Successfully</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to My Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      padding-top: 50px;
+    }
+    .container {
+      background: white;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #666;
+      font-size: 16px;
+    }
+    .footer {
+      margin-top: 30px;
+      color: #aaa;
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
-    <h1>🎉 Hello from your Dockerized NGINX container on EC2!</h1>
+  <div class="container">
+    <h1>CI/CD Project Deployed</h1>
+    <p>This container was deployed automatically via GitHub → DockerHub → EC2.</p>
+    <div class="footer">
+      &copy; 2025 Blake Fischbach
+    </div>
+  </div>
 </body>
 </html>
