@@ -4,7 +4,17 @@
       "execute-command": "/home/ec2-user/refresh.sh",
       "command-working-directory": "/home/ec2-user",
       "pass-arguments-to-command": [],
-      "response-message": "Deploy started."
+      "response-message": "Deploy started.",
+      "trigger-rule": {
+        "match": {
+          "type": "value",
+          "value": "blakessecret123",
+          "parameter": {
+            "source": "url",
+            "name": "token"
+          }
+        }
+      }
     }
   ]
   
