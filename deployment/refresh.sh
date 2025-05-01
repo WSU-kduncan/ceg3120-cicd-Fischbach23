@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Webhook triggered at $(date)" >> /home/ec2-user/refresh.log
+
 
 # Name of your image and container
 IMAGE_NAME="fischbooo/fischbach-ceg3120"
