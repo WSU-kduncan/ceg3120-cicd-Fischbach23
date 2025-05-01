@@ -3,13 +3,9 @@ Description=Webhook Listener Service
 After=network.target
 
 [Service]
-User=ec2-user
-WorkingDirectory=/home/ec2-user
 ExecStart=/home/ec2-user/webhook -hooks /home/ec2-user/webhook.json -ip 0.0.0.0 -port 9000 -verbose
 Restart=always
-RestartSec=5
-StandardOutput=file:/home/ec2-user/webhook.log
-StandardError=file:/home/ec2-user/webhook-error.log
+User=ec2-user
 
 [Install]
 WantedBy=multi-user.target
