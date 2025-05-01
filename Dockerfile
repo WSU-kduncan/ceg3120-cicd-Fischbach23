@@ -1,8 +1,16 @@
-# Use official NGINX image
+# Use the official NGINX base image (Alpine is small and efficient)
 FROM nginx:alpine
 
-# Copy your local files (index.html, etc.) to the default NGINX public directory
-COPY . /usr/share/nginx/html
+# Set working directory
+WORKDIR /usr/share/nginx/html
 
-# Expose port 80
+# Remove the default NGINX index page
+RUN rm -rf ./*
+
+# Copy your custom HTML file into the container
+COPY index.html .
+
+# Expose port 80 to the host
 EXPOSE 80
+
+# Start NGINX (already set in the base image's CMD)
