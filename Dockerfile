@@ -1,16 +1,26 @@
-# Use the official NGINX base image (Alpine is small and efficient)
-FROM nginx:alpine
+# Use official Node.js image as the base
+FROM node:18
 
-# Set working directory
-WORKDIR /usr/share/nginx/html
+# Set the working directory inside the container
+WORKDIR /app
 
-# Remove the default NGINX index page
-RUN rm -rf ./*
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Copy your custom HTML file into the container
-COPY index.html .
+# Install dependencies
+RUN npm install
 
-# Expose port 80 to the host
-EXPOSE 80
+# Copy the entire project (including src/, angular.json, etc.)
+COPY . .
 
-# Start NGINX (already set in the base image's CMD)
+# Build the Angular app for production
+RUN npm run build
+
+# Use a lightweight web server to serve the Angular dist folder
+# (optional, depends on how you're serving it)
+# FROM nginx:alpine
+# COPY --from=build-stage /app/dist/your-angular-app-name /usr/share/nginx/html
+
+# If you're running `ng serve` (dev mode)
+EXPOSE 4200
+CMD ["npm", "start"]
